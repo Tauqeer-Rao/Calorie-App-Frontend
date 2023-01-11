@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { UserService } from "../../services";
 import { openToast } from "../../services/utils/index";
 import { TOAST_TYPE } from "../../constants";
+import styles from "./invite.module.css";
 
 const InviteModel = ({ modal, setModal }) => {
   const [inviteData, setInviteData] = useState(null);
@@ -36,9 +37,11 @@ const InviteModel = ({ modal, setModal }) => {
   return (
     <>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}> Invite Friend </ModalHeader>
+        <ModalHeader toggle={toggle}>
+          <span className={styles.header_title}>Invite Friend </span>
+        </ModalHeader>
         <ModalBody>
-          <Form className="w-100">
+          <Form className={styles.form_body}>
             <FormGroup>
               <Label for="exampleEmail">User Name</Label>
               <input
@@ -78,7 +81,7 @@ const InviteModel = ({ modal, setModal }) => {
           </Form>
           {inviteData && (
             <div>
-              <h4 className="header text-center mt-3">Invite Detail</h4>
+              <h4 className={styles.invite_detail_header}>Invite Detail</h4>
 
               <p>Email: {inviteData.email}</p>
               <p>Password: {inviteData.password}</p>
